@@ -1,0 +1,148 @@
+.navbar
+    display: flex
+    justify-content: space-between
+    align-items: center
+    max-width: 1170px
+    margin: 0 auto
+    margin-top: 34px
+    position: sticky
+    top: 34px
+
+.navbar-logo
+    overflow: hidden
+
+    // .navbar-menu__link
+    &__link
+        font-size: 23px
+        font-weight: 800
+        color: $textcolor
+        transition: .2s
+        position: relative
+        &:hover, &:focus
+            color: lighten($textcolor, 20%)
+            text-decoration: none
+            &::before
+                transform: translateX(0)
+                background: lighten($textcolor, 20%)
+        &:before
+            content: ''
+            position: absolute
+            width: 100%
+            height: 2px
+            background: $textcolor
+            bottom: -2px
+            left: 0
+            transform: translateX(-100%)
+            transition: .2s
+
+.navbar-menu
+    @include media-breakpoint-down(md)
+        background: #fff
+        position: absolute
+        top: 40px
+        right: 0
+        width: 150px
+        padding: 15px
+        box-shadow: 0 4px 20px 0 lighten($textcolor, 50%)
+        transform: translateY(-150%)
+        transition: .2s
+
+    &.navbar-menu--show
+        transform: translateY(0%)
+
+    // .navbar-menu__list
+    &__list
+        display: flex
+        justify-content: space-between
+        align-items: center
+        margin: 0
+        padding: 0
+        list-style-type: none
+        @include media-breakpoint-down(md)
+            flex-direction: column
+            align-items: flex-start
+
+    // .navbar-menu__item
+    &__item
+        overflow: hidden
+        margin-left: 46px
+        &:first-child
+            margin-left: 0
+        @include media-breakpoint-down(md)
+            margin-left: 0
+
+    // .navbar-menu__link
+    &__link
+        font-size: 13px
+        font-weight: 700
+        color: $textcolor
+        transition: .2s
+        position: relative
+        &:hover, &:focus
+            color: lighten($textcolor, 20%)
+            text-decoration: none
+            &::before
+                transform: translateX(0)
+                background: lighten($textcolor, 20%)
+        &:before
+            content: ''
+            position: absolute
+            width: 100%
+            height: 1px
+            background: $textcolor
+            bottom: -1px
+            left: 0
+            transform: translateX(-101%)
+            transition: .2s
+
+.navbar-mobile-button
+    overflow: hidden
+    position: absolute
+    right: 0
+    @include media-breakpoint-down(md)
+        position: relative
+
+    // .navbar-mobile-button__btn
+    &__btn
+        border: none
+        background: transparent
+        width: 25px
+        height: 37px
+        padding: 5px
+        transform: translateX(100%)
+        transition: .2s
+        display: flex
+        flex-direction: column
+        justify-content: space-around
+        align-items: flex-end
+        position: relative
+        @include media-breakpoint-down(md)
+            transform: translateX(0)
+
+    // .navbar-mobile-button__item
+    &__item
+        width: 100%
+        height: 3px
+        background: $textcolor
+        transition: .2s
+        right: 0
+        &:first-child
+        &:nth-child(2)
+            width: 75%
+        &:last-child
+
+    &__btn--close
+        .navbar-mobile-button__item
+            width: 75%
+            position: absolute
+            top: 0
+            bottom: 0
+            left: 0
+            right: 0
+            margin: auto
+            &:first-child
+                transform: rotate(-45deg)
+            &:nth-child(2)
+                opacity: 0
+            &:last-child
+                transform: rotate(45deg)
